@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nele Simons</title>
+  <link rel="stylesheet"  href="{{ url_for('static', filename='Nele2.css') }}">
+</head>
+
+
+<body>
+
+<h1>Medizinische Bildanalyse</h1>
+
+<nav>
+    <ul>
+        <li> <a href="#">Datum: 15.02.2026 </a></li>
+        <li> <a href="#"> Von: Nele Simons</a></li>
+        <li id="#"> <a href="#"> Klassenlehre: André Metzger</a></li>
+         <li id="#"> <a href="#"> Schule: Julius-Wegeler</a></li>
+
+         <li id="Abstand"> <a href="#"></a></li>
+          <li id="Abstand"> <a href="#"></a></li>
+          <li id="Abstand"> <a href="#"></a></li>
+          <li id="Abstand"> <a href="#"></a></li>
+         
+       
+         <li id="Start"> <a href="/">Start</a></li>
+         <li id="Bildereinfügen"> <a href="/analyze">Bilder einfügen</a></li>
+        
+
+    </ul>
+</nav> 
+
+
+
+<div class="container">
+    <h2>Bild hochladen</h2>
+    <form action="/analyze" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Analysieren</button>
+    </form>
+
+    {% if warning %}
+        <p><b>⚠️ Hinweis: Dies ist keine medizinische Diagnose! Bei Verletzungen immer einen Arzt aufsuchen.</b></p>
+    {% endif %}
+
+    {% if image_url %}
+        <div style="margin-top:20px;">
+            <img src="{{ image_url }}" width="300"><br>
+            <p><b>Analyse:</b> {{ result_text }}</p>
+        </div>
+    {% else %}
+        <p>{{ result_text }}</p>
+    {% endif %}
+</div>
+
+
+<p></p>
+
+
+
+</body>
+
+</html>
